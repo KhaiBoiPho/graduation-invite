@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thiệp mời tốt nghiệp · Nguyễn Quang Khải</title>
+<meta name="description" content="Thiệp mời lễ tốt nghiệp FPT University của Nguyễn Quang Khải - 08/11.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#2b3aa3;--lav:#b9c0ee;--pink:#f4a6c0;--ink:#26308f}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{font-family:'Space Mono',ui-monospace,monospace;color:#fff;
+  background:var(--blue);display:grid;place-items:center}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.2;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* ===== 16:9 stage, designed at 1600x900, scaled to fit any screen ===== */
+.stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform-origin:0 0}
+
+.chrome{font-family:'Bagel Fat One',system-ui,sans-serif;text-transform:uppercase;line-height:1;
+  background:linear-gradient(180deg,#fff 0%,#ffd3e4 38%,#f48fb6 62%,#ffd6e6 100%);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 14px rgba(255,150,200,.55)) drop-shadow(0 2px 0 rgba(255,255,255,.35))}
+
+.top{position:absolute;left:40px;right:40px;top:22px;display:flex;justify-content:space-between;font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--lav)}
+.top b{color:#fff}
+h1{position:absolute;left:0;right:0;top:46px;text-align:center;font-size:104px;z-index:3}
+.cursor{position:absolute;z-index:6;left:1040px;top:128px;width:46px;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.3));animation:cur 3s ease-in-out infinite}
+@keyframes cur{50%{transform:translate(-14px,-8px)}}
+
+/* CRT */
+.pc{position:absolute;left:610px;top:168px;width:380px;z-index:2}
+.crt{position:relative;background:linear-gradient(160deg,#ececea,#bdbdb8 60%,#a9a9a5);border-radius:14px 14px 10px 10px;padding:28px 28px 56px;box-shadow:0 26px 50px rgba(8,10,60,.55),inset 0 2px 0 #fff,inset 0 -6px 12px rgba(0,0,0,.18)}
+.screen{position:relative;height:262px;border-radius:6px;overflow:hidden;background:#1a2380;box-shadow:inset 0 0 0 5px #8d8d89,inset 0 0 38px rgba(0,0,30,.7)}
+.bounce{position:absolute;inset:0;z-index:0}
+.bounce img{position:absolute;left:0;top:0;border-radius:50%;object-fit:cover;border:3px solid #fff;box-shadow:0 0 14px rgba(255,160,210,.85);filter:grayscale(1) contrast(1.05) brightness(1.5);will-change:transform;transition:filter .4s}
+.crt:hover .bounce img{filter:none}
+.screen::before{content:"";position:absolute;inset:0;background:#3140c9;mix-blend-mode:multiply;z-index:1;transition:opacity .4s}
+.screen::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,40,.18) 0 2px,transparent 2px 4px),radial-gradient(ellipse at center,transparent 55%,rgba(0,0,40,.55) 100%)}
+.crt:hover .screen img{filter:none}.crt:hover .screen::before{opacity:0}
+.heart{position:absolute;z-index:4;top:36px;right:36px;width:56px;filter:drop-shadow(0 0 6px #fff);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{transform:scale(1.12) rotate(6deg)}}
+.badge{position:absolute;z-index:4;left:42px;top:40px;font-size:12px;font-weight:700;letter-spacing:.12em;background:#ff4f8f;color:#fff;padding:3px 8px;border-radius:3px;animation:blink 1.2s steps(2) infinite}
+@keyframes blink{50%{opacity:.35}}
+.buttons{position:absolute;left:46px;bottom:20px;display:flex;gap:9px}
+.buttons i{width:18px;height:11px;border-radius:50%;background:#d6d6d2;box-shadow:inset 0 -2px 0 #8d8d89,0 1px 0 #fff}
+.led{position:absolute;right:42px;bottom:22px;width:11px;height:11px;background:#2de27a;border-radius:2px;box-shadow:0 0 8px #2de27a}
+.stand{width:36%;height:24px;margin:-2px auto 0;background:linear-gradient(#b4b4b0,#8e8e8a);border-radius:0 0 50% 50%/0 0 100% 100%}
+.tower{width:78%;margin:0 auto;height:96px;background:linear-gradient(90deg,#9c9c98,#d3d3cf 35%,#b9b9b5 70%,#8f8f8b);border-radius:6px 6px 0 0}
+
+/* torn cards */
+.card{position:absolute;width:310px;padding:20px 24px 24px;background:var(--pink);color:var(--ink);z-index:3;
+  clip-path:polygon(0 4%,6% 0,14% 3%,24% 0,36% 3%,48% 0,60% 4%,72% 0,84% 3%,94% 0,100% 5%,98% 20%,100% 34%,97% 50%,100% 66%,98% 82%,100% 96%,92% 100%,80% 97%,68% 100%,56% 96%,44% 100%,32% 97%,20% 100%,10% 96%,0 100%,2% 84%,0 68%,3% 52%,0 36%,2% 18%);
+  background-image:radial-gradient(rgba(255,255,255,.35) 1px,transparent 1.5px);background-size:5px 5px;transition:transform .25s}
+.card:hover{transform:rotate(0) scale(1.05)!important;z-index:7}
+.card h3{font-size:25px;font-weight:700;margin-bottom:8px;transform:rotate(-3deg);transform-origin:left}
+.row{display:flex;justify-content:space-between;gap:12px;padding:5px 0;border-bottom:1px dashed rgba(38,48,143,.35);font-size:14px}
+.row:last-child{border:0}.row span{opacity:.75}.row b{text-align:right}
+.tbd{font-style:italic;opacity:.8}
+.nm{font-weight:700;font-size:23px;line-height:1.15;margin:2px 0 8px}
+.c1{left:100px;top:220px;transform:rotate(-4deg)}
+.c2{left:90px;top:440px;transform:rotate(3deg)}
+.c3{left:1190px;top:250px;transform:rotate(3deg)}
+.c4{left:1200px;top:450px;transform:rotate(-3deg)}
+.sticker{position:absolute;z-index:5;object-fit:cover;filter:drop-shadow(0 0 10px #ffa6d6)}
+.s-heart{left:340px;top:162px;width:92px;height:92px;clip-path:path('M46 88 C-26 36 12 -10 46 24 C80 -10 118 36 46 88Z');transform:rotate(-6deg)}
+.s-star{left:1470px;top:350px;width:100px;height:100px;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);background:#fff}
+.s-star img{width:100%;height:100%;object-fit:cover;transform:scale(.62)}
+
+/* thiệp chỉ hiện sau khi nhập tên */
+.card,.sticker{opacity:0;visibility:hidden;transition:opacity .7s .15s,visibility 0s .15s}
+body.opened .card,body.opened .sticker{opacity:1;visibility:visible}
+
+/* bottom panel: gate / invite (covers the tower) */
+.panel{position:absolute;left:400px;width:800px;top:672px;height:190px;z-index:8;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.lead{font-size:16px;color:var(--lav);margin:6px 0 14px}
+.field{display:flex;gap:10px;background:#fff;border-radius:999px;padding:6px;width:560px;box-shadow:0 0 0 3px var(--pink),0 12px 30px rgba(10,10,70,.5)}
+.field input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:700 18px 'Space Mono',monospace;color:var(--ink);padding:0 20px}
+.field input::placeholder{color:#8a92d6;font-weight:400}
+.field button{border:0;cursor:pointer;font:700 15px 'Space Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#fff;background:linear-gradient(180deg,#ff7fb2,#f0488f);padding:14px 26px;border-radius:999px;box-shadow:inset 0 2px 0 rgba(255,255,255,.4)}
+.field button:hover{filter:brightness(1.08)}
+.hint{font-size:13px;color:#ffd3e4;margin-top:8px;min-height:16px}
+#invite{display:none}
+body.opened #gate{display:none}
+body.opened #invite{display:block;animation:rise .7s cubic-bezier(.2,.8,.2,1)}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}}
+.to{font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--lav)}
+.guest{font-weight:700;font-size:44px;line-height:1.1;margin:4px 0 6px;text-shadow:0 0 18px rgba(255,150,200,.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:800px}
+.msg{font-size:15px;line-height:1.5;white-space:nowrap}
+.cdrow{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:10px;font-size:13px;color:var(--lav)}
+.cd{display:flex;gap:6px}
+.cd div{background:#fff;color:var(--ink);border-radius:6px;padding:3px 9px;font-weight:700;font-size:15px}
+.cd small{font-weight:400;font-size:11px;margin-left:2px}
+.back{background:none;border:0;color:var(--lav);font:inherit;font-size:12px;text-decoration:underline;cursor:pointer;margin-left:10px}
+
+.foot{position:absolute;bottom:8px;left:0;right:0;bottom:10px;text-align:center;font-size:12px;letter-spacing:.14em;color:var(--lav);z-index:9}
+.rot{display:none;position:fixed;left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:#26308f;z-index:99}
+@media (orientation:portrait){.rot{display:block}}
+.confetti{position:fixed;top:-20px;z-index:60;width:10px;height:14px;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="top"><span><b>FPT University</b> · Lễ tốt nghiệp 2026</span><span>08/11 · Ca 1</span></div>
+  <h1 class="chrome">Graduation Day</h1>
+  <svg class="cursor" viewBox="0 0 24 32" aria-hidden="true"><path d="M2 2v24l6-6 4 9 4-2-4-9h9z" fill="#fff" stroke="#26308f" stroke-width="2" stroke-linejoin="round"/></svg>
+
+  <div class="pc">
+    <div class="crt">
+      <div class="screen"><div class="bounce" id="bounce" role="img" aria-label="Ảnh Nguyễn Quang Khải chạy qua chạy lại"></div></div>
+      <span class="badge">● REC 08/11</span>
+      <svg class="heart" viewBox="0 0 50 46" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"><path d="M25 42C-6 22 6 -2 25 11 44 -2 56 22 25 42Z"/></svg>
+      <div class="buttons"><i></i><i></i><i></i><i></i></div><div class="led"></div>
+    </div>
+    <div class="stand"></div><div class="tower"></div>
+  </div>
+
+  <img class="sticker s-heart" src="khai-face.jpg" alt="">
+  <section class="card c1"><h3>Tân cử nhân</h3>
+    <div class="nm" style="font-size:22px;margin-bottom:0;white-space:nowrap">Nguyễn Quang Khải</div></section>
+  <section class="card c2"><h3>Check-in</h3>
+    <div class="row"><span>Tập trung</span><b>6h00 – 6h50</b></div>
+    <div class="row"><span>Phòng</span><b class="tbd">Đang cập nhật</b></div></section>
+  <section class="card c3"><h3>Trao bằng</h3>
+    <div class="row"><span>Phiên</span><b>08/11 – Ca 1</b></div>
+    <div class="row"><span>Thời gian</span><b>7h00 – 9h30</b></div></section>
+  <div class="sticker s-star"><img src="khai-face.jpg" alt=""></div>
+
+  <div class="panel">
+    <div id="gate">
+      <h2 class="chrome" style="font-size:38px">Bạn tên là gì?</h2>
+      <p class="lead">Điền tên để mở thiệp mời dự lễ tốt nghiệp của Khải ✧</p>
+      <form class="field" id="form" autocomplete="off">
+        <input id="name" type="text" maxlength="40" placeholder="Nhập tên của bạn…" aria-label="Tên của bạn" required>
+        <button type="submit">Mở thiệp</button>
+      </form>
+      <div class="hint" id="hint"></div>
+    </div>
+    <div id="invite">
+      <div class="to">Trân trọng kính mời</div>
+      <div class="guest" id="guest"></div>
+      <p class="msg">Đến chung vui lễ tốt nghiệp của <b>Nguyễn Quang Khải</b><br>Phiên <b>08/11 – Ca 1</b> · Check-in <b>6h00</b> · Trao bằng <b>7h00</b></p>
+      <div class="cdrow"><span id="cdLabel">Còn</span>
+        <div class="cd" id="cd"><div><span id="d">0</span><small>ngày</small></div><div><span id="h">0</span><small>giờ</small></div><div><span id="m">0</span><small>phút</small></div><div><span id="s">0</span><small>giây</small></div></div>
+        <button class="back" id="back" type="button">← Nhập tên khác</button></div>
+    </div>
+  </div>
+
+  <div class="foot">FPT UNIVERSITY · SE181512 · ✧ SEE YOU AT GRADUATION ✧</div>
+</div>
+<div class="rot">↻ Xoay ngang điện thoại để xem rõ hơn</div>
+
+<script>
+(function(){
+  (function(){
+    var box=document.getElementById('bounce'),W=box.offsetWidth||324,H=box.offsetHeight||262;
+    var srcs=['f1','f2','f3','f4','khai-face','f1','f2','f3','f4','khai-face','f2','f1'];
+    var slow=matchMedia('(prefers-reduced-motion:reduce)').matches?.15:1;
+    var balls=srcs.map(function(n,i){
+      var d=34+Math.random()*40,g=document.createElement('img');
+      g.src=n+'.jpg';g.alt='';g.style.width=g.style.height=d+'px';box.appendChild(g);
+      var sp=(180+Math.random()*220)*slow,an=Math.random()*6.283;
+      return {el:g,d:d,x:Math.random()*(W-d),y:Math.random()*(H-d),vx:Math.cos(an)*sp,vy:Math.sin(an)*sp};
+    });
+    var last=performance.now();
+    function loop(t){
+      var dt=Math.min((t-last)/1000,.05);last=t;
+      balls.forEach(function(b){
+        b.x+=b.vx*dt;b.y+=b.vy*dt;
+        if(b.x<0){b.x=0;b.vx=Math.abs(b.vx)}else if(b.x>W-b.d){b.x=W-b.d;b.vx=-Math.abs(b.vx)}
+        if(b.y<0){b.y=0;b.vy=Math.abs(b.vy)}else if(b.y>H-b.d){b.y=H-b.d;b.vy=-Math.abs(b.vy)}
+        b.el.style.transform='translate('+b.x+'px,'+b.y+'px)';
+      });
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+  })();
+  var $=function(i){return document.getElementById(i)};
+  var stage=$('stage');
+  function fit(){
+    var k=Math.min(innerWidth/1600,innerHeight/900);
+    stage.style.transform='scale('+k+') translate(-50%,-50%)';
+  }
+  addEventListener('resize',fit);fit();
+
+  var form=$('form'),input=$('name'),hint=$('hint');
+  function clean(s){return s.trim().replace(/\s+/g,' ')}
+  function open(name,silent){
+    $('guest').textContent=name;
+    document.body.classList.add('opened');
+    document.title='Thiệp mời gửi '+name+' · Lễ tốt nghiệp Nguyễn Quang Khải';
+    if(!silent){try{history.replaceState(null,'','?name='+encodeURIComponent(name))}catch(e){};confetti()}
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var v=clean(input.value);
+    if(v.length<2){hint.textContent='Bạn nhập tên giúp mình nhé ♡';return}
+    open(v,false);
+  });
+  $('back').addEventListener('click',function(){
+    document.body.classList.remove('opened');
+    try{history.replaceState(null,'',location.pathname)}catch(e){}
+    input.value='';input.focus();
+  });
+  try{var q=new URLSearchParams(location.search).get('name');if(q&&clean(q).length>=2)open(clean(q).slice(0,40),true)}catch(e){}
+
+  var now=new Date(),y=now.getFullYear(),target=new Date(y+'-11-08T07:00:00+07:00');
+  if(now-target>864e5*3)target=new Date((y+1)+'-11-08T07:00:00+07:00');
+  function tick(){
+    var diff=target-new Date();
+    if(diff<=0){$('cd').style.display='none';$('cdLabel').textContent='Lễ tốt nghiệp đang diễn ra 🎓';return}
+    var s=Math.floor(diff/1000);
+    $('d').textContent=Math.floor(s/86400);$('h').textContent=Math.floor(s%86400/3600);
+    $('m').textContent=Math.floor(s%3600/60);$('s').textContent=s%60;
+  }
+  tick();setInterval(tick,1000);
+
+  function confetti(){
+    if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    var cols=['#ff7fb2','#ffd3e4','#ffffff','#8fa0ff','#ffe36b'];
+    for(var i=0;i<70;i++){
+      var c=document.createElement('i');c.className='confetti';
+      c.style.left=Math.random()*100+'vw';c.style.background=cols[i%5];
+      c.style.animationDuration=(2+Math.random()*2.2)+'s';c.style.animationDelay=Math.random()*.5+'s';
+      document.body.appendChild(c);setTimeout(function(el){el.remove()},5500,c);
+    }
+  }
+})();
+</script>
+</body>
+</html>
