@@ -95,6 +95,27 @@ body.opened #invite{display:block;animation:rise .7s cubic-bezier(.2,.8,.2,1)}
 .back{background:none;border:0;color:var(--lav);font:inherit;font-size:12px;text-decoration:underline;cursor:pointer;margin-left:10px}
 
 .foot{position:absolute;bottom:8px;left:0;right:0;bottom:10px;text-align:center;font-size:12px;letter-spacing:.14em;color:var(--lav);z-index:9}
+
+/* ===== Điện thoại dọc: bố cục xếp dọc, cuộn được ===== */
+@media (orientation:portrait){
+  html,body{height:auto;min-height:100%;overflow-x:hidden;overflow-y:auto}
+  body{display:block}
+  .stage{position:relative;left:auto;top:auto;width:100%;height:auto;transform:none!important;padding:16px 16px 36px;display:flex;flex-direction:column;align-items:center}
+  .top{position:static;font-size:11px;width:100%;order:0}
+  h1{position:static;order:1;font-size:clamp(40px,14vw,64px);margin:14px 0 8px;line-height:1.02;width:100%}
+  .cursor,.sticker{display:none}
+  .pc{position:relative;left:auto;top:auto;order:2;width:min(330px,84vw)}
+  .screen{height:230px}.tower{display:none}.stand{margin-bottom:6px}
+  .panel{position:relative;left:auto;top:auto;order:3;width:100%;height:auto;margin:18px 0 8px}
+  .field{width:100%;max-width:420px}.field input{font-size:16px;padding:0 14px}.field button{padding:13px 16px}
+  .lead{font-size:14px}.guest{font-size:32px;max-width:100%}.msg{white-space:normal;font-size:13px}
+  .cdrow{flex-wrap:wrap}
+  .card{display:none;position:relative;left:auto;top:auto;order:4;width:100%;max-width:340px;margin:10px 0}
+  body.opened .card{display:block}
+  .c1,.c3{transform:rotate(-2deg)}.c2{transform:rotate(2deg)}
+  .foot{position:static;order:5;margin-top:22px;font-size:10px}
+  .rot{display:none!important}
+}
 .rot{display:none;position:fixed;left:0;right:0;bottom:14px;text-align:center;font-size:12px;color:#26308f;z-index:99}
 @media (orientation:portrait){.rot{display:block}}
 .confetti{position:fixed;top:-20px;z-index:60;width:10px;height:14px;pointer-events:none;animation:fall linear forwards}
@@ -157,6 +178,7 @@ body.opened #invite{display:block;animation:rise .7s cubic-bezier(.2,.8,.2,1)}
 (function(){
   (function(){
     var box=document.getElementById('bounce'),W=box.offsetWidth||324,H=box.offsetHeight||262;
+    addEventListener('resize',function(){W=box.offsetWidth||W;H=box.offsetHeight||H});
     var srcs=['f1','f2','f3','f4','khai-face','f1','f2','f3','f4','khai-face','f2','f1'];
     var slow=matchMedia('(prefers-reduced-motion:reduce)').matches?.15:1;
     var balls=srcs.map(function(n,i){
@@ -181,6 +203,7 @@ body.opened #invite{display:block;animation:rise .7s cubic-bezier(.2,.8,.2,1)}
   var $=function(i){return document.getElementById(i)};
   var stage=$('stage');
   function fit(){
+    if(innerHeight>innerWidth){stage.style.transform='';return}
     var k=Math.min(innerWidth/1600,innerHeight/900);
     stage.style.transform='scale('+k+') translate(-50%,-50%)';
   }
